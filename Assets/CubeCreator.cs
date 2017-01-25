@@ -58,6 +58,6 @@ public class CubeCreator : MonoBehaviour {
     }
 
     void Update() {
-        rotatingCubes.transform.Rotate(Vector3.up * (RotationSpeed * Time.deltaTime));
+        rotatingCubes.transform.Rotate(Vector3.up * (-RotationSpeed * Time.deltaTime));
     }
 }
