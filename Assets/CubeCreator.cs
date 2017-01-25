@@ -13,7 +13,7 @@ public class CubeCreator : MonoBehaviour {
     public GameObject cube;
 
     public GameObject rotatingCubes;
-    private readonly float RotationSpeed = 0.5f;
+    private readonly float RotationSpeed = 30f;
 
     void Start() {
         int gridSize = 10;
@@ -30,31 +30,34 @@ public class CubeCreator : MonoBehaviour {
                         Debug.Log(position.x);
                         continue;
                     }
-                    //Instantiate(cube, position, Quaternion.Euler(0, 180, 0));
+                    GameObject cb = Instantiate(cube, position, Quaternion.Euler(0, 180f, 0)) as GameObject;
+                    cb.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
                 }
             }
         }
 
-        // TODO: merge
+        // TODO: merge cubes
         // https://docs.unity3d.com/ScriptReference/Mesh.CombineMeshes.html
 
         // TODO: make rotating cubes
         // = [ [0, 0.25, -0.8], [0.8, 0.25, 0], [0, 0.25, 0.8], [-0.8, 0.25, 0] ];
-        rotatingCubes.transform.position.Set(0f, 0.25f, 0f);
         GameObject _cube;
-        _cube = Instantiate(cube, rotatingCubes.transform) as GameObject;
-        _cube.transform.position.Set(0f, 0f, -0.8f);
-        _cube = Instantiate(cube, rotatingCubes.transform) as GameObject;
-        _cube.transform.position.Set(0f, 0f, 0.8f);
-        _cube = Instantiate(cube, rotatingCubes.transform) as GameObject;
-        _cube.transform.position.Set(0.8f, 0f, 0f);
-        _cube = Instantiate(cube, rotatingCubes.transform) as GameObject;
-        _cube.transform.position.Set(-0.8f, 0f, 0f);
+        float _scale = 0.05f * 2f;
+        float h = 0.25f;
+        Vector3 scale = new Vector3(_scale, _scale, _scale);
+        _cube = Instantiate(cube, new Vector3(0, h, 0.8f), Quaternion.identity, rotatingCubes.transform) as GameObject;
+        _cube.transform.localScale = scale;
+        _cube = Instantiate(cube, new Vector3(0, h, -0.8f), Quaternion.identity, rotatingCubes.transform) as GameObject;
+        _cube.transform.localScale = scale;
+        _cube = Instantiate(cube, new Vector3(0.8f, h, 0), Quaternion.identity, rotatingCubes.transform) as GameObject;
+        _cube.transform.localScale = scale;
+        _cube = Instantiate(cube, new Vector3(-0.8f, h, 0), Quaternion.identity, rotatingCubes.transform) as GameObject;
+        _cube.transform.localScale = scale;
+
+        rotatingCubes.transform.position.Set(0f, 25f, 0f);
     }
 
     void Update() {
-        // TODO: rotating cubes
         rotatingCubes.transform.Rotate(Vector3.up * (RotationSpeed * Time.deltaTime));
-
     }
 }
