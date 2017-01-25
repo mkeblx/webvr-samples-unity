@@ -45,7 +45,7 @@ public class CubeCreator : MonoBehaviour {
         float _scale = 0.05f * 2f;
         float h = 0.25f;
         Vector3 scale = new Vector3(_scale, _scale, _scale);
-        _cube = Instantiate(cube, new Vector3(0, h, 0.8f), Quaternion.identity, rotatingCubes.transform) as GameObject;
+        _cube = Instantiate(cube, new Vector3(0, h, 0.8f), Quaternion.Euler(0, 180f, 0), rotatingCubes.transform) as GameObject;
         _cube.transform.localScale = scale;
         _cube = Instantiate(cube, new Vector3(0, h, -0.8f), Quaternion.identity, rotatingCubes.transform) as GameObject;
         _cube.transform.localScale = scale;
