@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.VR;
 using System.Collections;
 
 /*
@@ -10,13 +11,16 @@ using System.Collections;
 
 public class CubeCreator : MonoBehaviour {
 
+	[SerializeField] private float m_RenderScale = 1f;
+
 	public GameObject cube;
 
 	public GameObject rotatingCubes;
 	private readonly float RotationSpeed = 30f;
 
 	void Awake() {
-		Application.targetFrameRate = 60;
+		//Application.targetFrameRate = 10;
+		VRSettings.renderScale = m_RenderScale;
 	}
 
 	void Start() {
