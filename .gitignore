@@ -29,3 +29,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+
+# Oculus sigs
+oculussig*
+oculussig*.meta
