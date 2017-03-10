@@ -23,7 +23,7 @@ public class CubeCreator : MonoBehaviour {
 			{
 				for (int z = 0; z < gridSize; ++z)
 				{
-					Vector3 position = new Vector3(x - gridSize / 2, y - gridSize / 2, z - gridSize / 2);
+					Vector3 position = new Vector3(x - gridSize / 2, y - gridSize / 2, (z - gridSize / 2) * -1);
 					if (position.x == 0 && position.y == 0 && position.z == 0)
 						continue;
 					GameObject cb = Instantiate(cube, position, Quaternion.Euler(0, 180f, 0)) as GameObject;
