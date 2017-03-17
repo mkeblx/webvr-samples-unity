@@ -4,24 +4,30 @@ using System.Collections;
 public class ClickBehavior : MonoBehaviour
 {
 
-	private Camera cam;
+	public Camera cam;
+	public Camera cam2;
+
+	private Color color = new Color(0.1f, 0.2f, 0.3f, 1.0f);
 
 	void Start()
 	{
-		cam = GetComponent<Camera>();
-
 		cam.clearFlags = CameraClearFlags.SolidColor;
+		cam2.clearFlags = CameraClearFlags.SolidColor;
 
-		cam.backgroundColor = new Color(0.1f, 0.2f, 0.3f, 1.0f);
+		cam.backgroundColor = color;
+		cam2.backgroundColor = color;
 	}
 
 	void Update()
 	{
 		if (Input.GetMouseButtonUp(0))
 		{
-			cam.backgroundColor = new Color(
-				Random.Range(0f, 0.5f), Random.Range(0f, 0.5f), Random.Range(0f, 0.5f)
-				);
+			color.a = Random.Range(0f, 0.5f);
+			color.g = Random.Range(0f, 0.5f);
+			color.b = Random.Range(0f, 0.5f);
+
+			cam.backgroundColor = color;
+			cam2.backgroundColor = color;
 		}
 	}
 }
