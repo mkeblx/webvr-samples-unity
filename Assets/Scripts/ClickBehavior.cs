@@ -3,19 +3,13 @@ using System.Collections;
 
 public class ClickBehavior : MonoBehaviour
 {
-
-	public Camera cam;
-	public Camera cam2;
+	public Camera[] cameras;
 
 	private Color color = new Color(0.1f, 0.2f, 0.3f, 1.0f);
 
 	void Start()
 	{
-		cam.clearFlags = CameraClearFlags.SolidColor;
-		cam2.clearFlags = CameraClearFlags.SolidColor;
 
-		cam.backgroundColor = color;
-		cam2.backgroundColor = color;
 	}
 
 	void Update()
@@ -26,8 +20,14 @@ public class ClickBehavior : MonoBehaviour
 			color.g = Random.Range(0f, 0.5f);
 			color.b = Random.Range(0f, 0.5f);
 
-			cam.backgroundColor = color;
-			cam2.backgroundColor = color;
+			foreach (Camera cam in cameras)
+			{
+				cam.backgroundColor = color;
+			}
 		}
+
+#if UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
+
+#endif
 	}
 }
