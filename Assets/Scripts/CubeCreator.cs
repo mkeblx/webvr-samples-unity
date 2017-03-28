@@ -21,6 +21,8 @@ public class CubeCreator : MonoBehaviour {
 	}
 
 	void Start() {
+		modifyCubeUVs(cube);
+
 		int gridSize = 10;
 		for (int x = 0; x < gridSize; ++x)
 		{
@@ -32,7 +34,7 @@ public class CubeCreator : MonoBehaviour {
 					if (position.x == 0 && position.y == 0 && position.z == 0)
 						continue;
 					GameObject cb = Instantiate(cube, position, Quaternion.Euler(0, 180f, 0), cubes.transform) as GameObject;
-					cb.name = "Cube"+x+y+z;
+					cb.name = "Cube" +x+y+z;
 					cb.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 				}
 			}
@@ -83,6 +85,19 @@ public class CubeCreator : MonoBehaviour {
 
 	void Merge(GameObject fromContainer, GameObject toObject) {
 
+	}
+
+	void modifyCubeUVs(GameObject cubeObject) {
+		Mesh mesh = cubeObject.GetComponent<MeshFilter>().sharedMesh;
+		Vector3[] vertices = mesh.vertices;
+		Vector2[] uvs = mesh.uv;
+
+		uvs[7] = new Vector2(0,0);
+		uvs[6] = new Vector2(1, 0);
+		uvs[11] = new Vector2(0, 1);
+		uvs[10] = new Vector2(1, 1);
+
+		mesh.uv = uvs;
 	}
 
 }
