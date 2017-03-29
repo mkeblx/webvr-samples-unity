@@ -33,7 +33,7 @@ public class CubeCreator : MonoBehaviour {
 					Vector3 position = new Vector3(x - gridSize / 2, y - gridSize / 2, (z - gridSize / 2) * -1);
 					if (position.x == 0 && position.y == 0 && position.z == 0)
 						continue;
-					GameObject cb = Instantiate(cube, position, Quaternion.Euler(0, 180f, 0), cubes.transform) as GameObject;
+					GameObject cb = Instantiate(cube, position, Quaternion.Euler(0, 0, 0), cubes.transform) as GameObject;
 					cb.name = "Cube" +x+y+z;
 					cb.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 				}
