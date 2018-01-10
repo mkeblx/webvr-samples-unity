@@ -17,7 +17,7 @@ public class CubeCreator : MonoBehaviour {
 	private bool merge = true;
 
 	void Awake() {
-		VRSettings.renderScale = m_RenderScale;
+		UnityEngine.XR.XRSettings.eyeTextureResolutionScale = m_RenderScale;
 	}
 
 	void Start() {
