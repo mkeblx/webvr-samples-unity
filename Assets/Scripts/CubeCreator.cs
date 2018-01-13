@@ -92,8 +92,8 @@ public class CubeCreator : MonoBehaviour {
 		Vector3[] vertices = mesh.vertices;
 		Vector2[] uvs = mesh.uv;
 
-		uvs[7] = new Vector2(0,0);
-		uvs[6] = new Vector2(1, 0);
+		uvs[ 7] = new Vector2(0, 0);
+		uvs[ 6] = new Vector2(1, 0);
 		uvs[11] = new Vector2(0, 1);
 		uvs[10] = new Vector2(1, 1);
 
