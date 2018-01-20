@@ -14,7 +14,7 @@ public class ClickBehavior : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetMouseButtonUp(0))
+		if (Input.GetMouseButtonUp(0) || GvrControllerInput.ClickButtonDown)
 		{
 			color.a = Random.Range(0f, 0.5f);
 			color.g = Random.Range(0f, 0.5f);
